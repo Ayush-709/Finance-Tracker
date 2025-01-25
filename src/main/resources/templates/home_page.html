@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style/style.css">
+
+    <title>Finance Tracker - Dashboard</title>
+</head>
+<body>
+<header class="main-header">
+    <div class="logo">
+        <h1>Finance Tracker</h1>
+    </div>
+    <button class="hamburger-menu" aria-label="Toggle menu">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+    </button>
+    <ul class="nav-links">
+        <li><a href="#">Transactions</a></li>
+        <li><a href="#">Budget</a></li>
+        <li><a href="#">Reports</a></li>
+        <li><a href="#">Settings</a></li>
+    </ul>
+</header>
+
+
+<main>
+    <section class="balance-summary">
+        <h2>Total Cash: <span>&#x20B9;</span> <span id="total-balance-cash" th:text="${totalCash}">0.00</span></h2>
+        <h2>Total Balance: <span>&#x20B9;</span> <span id="total-balance-account" th:text="${totalBalance}">0.00</span></h2>
+    </section>
+    <section class="recent-transactions">
+        <h3>Recent Transactions</h3>
+        <ul id="transaction-list">
+            <li th:each="transaction : ${transactions}">
+                <div class="transaction-details">
+                    <div class="transaction-date" th:text="${transaction.getTransactionDate()}">Date</div>
+                    <div class="transaction-type" th:text="${transaction.getType()}">Type</div>
+                    <div class="transaction-mode" th:text="${transaction.getModeOFPayment()}">Mode</div>
+                    <div class="transaction-amount" th:text="${transaction.getAmount()}">Amount</div>
+                </div>
+            </li>
+        </ul>
+    </section>
+
+    <button class="fab">+</button>
+</main>
+<footer>
+    <p>&copy; Ayush Rawat</p>
+</footer>
+
+<!-- Link to the external JavaScript file -->
+<script src="/script/script.js" defer></script>
+</body>
+</html>
